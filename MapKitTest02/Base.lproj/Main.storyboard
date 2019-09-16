@@ -21,6 +21,27 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qgP-j7-V7L">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ADA-f6-ZzO">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="satellite" width="42" id="7xg-hq-VrM">
+                                        <connections>
+                                            <action selector="satellite:" destination="BYZ-38-t0r" id="oqz-bV-i60"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="hybrid" width="42" id="xZI-b7-4id">
+                                        <connections>
+                                            <action selector="hybrid:" destination="BYZ-38-t0r" id="bec-O3-JAD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="standard" width="42" id="6Kb-o2-q2K">
+                                        <connections>
+                                            <action selector="standard:" destination="BYZ-38-t0r" id="e3G-83-dBI"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -31,9 +52,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <outlet property="mapView" destination="qgP-j7-V7L" id="Ihs-zz-9B7"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
