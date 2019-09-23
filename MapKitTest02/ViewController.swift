@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  MapKitTest02
-//
-//  Created by D7703_16 on 2019. 9. 16..
-//  Copyright © 2019년 201526109. All rights reserved.
-//
-
 import UIKit
 import MapKit
 
@@ -50,8 +42,6 @@ class ViewController: UIViewController {
     @IBAction func standard(_ sender: Any) {
         mapView.mapType = MKMapType.standard
     }
-    
-    
     
 }
 
