@@ -1,11 +1,16 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate {
+    
+    var mks = [MKPointAnnotation]()
+    
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.delegate = self
         
         //MapType 설정
         //mapView.mapType = MKMapType.satellite
@@ -32,31 +37,36 @@ class ViewController: UIViewController {
         mk01.coordinate = location
         mk01.title = "동의과학대학교"
         mk01.subtitle = "We are DIT"
-        mapView.addAnnotation(mk01)
+        //mapView.addAnnotation(mk01)
+        mks.append(mk01)
         
         let mk02 = MKPointAnnotation()
         mk02.coordinate.latitude = 35.168380
         mk02.coordinate.longitude = 129.057845
         mk02.title = "부산시민공원"
         mk02.subtitle = "부산시민공원"
-        mapView.addAnnotation(mk02)
+        //mapView.addAnnotation(mk02)
+        mks.append(mk02)
         
         let mk03 = MKPointAnnotation()
         mk03.coordinate.latitude = 35.147884
         mk03.coordinate.longitude = 129.130048
         mk03.title = "광안대교"
         mk03.subtitle = "부산의 랜드마크"
-        mapView.addAnnotation(mk03)
+        //mapView.addAnnotation(mk03)
+        mks.append(mk03)
         
         let mk04 = MKPointAnnotation()
         mk04.coordinate.latitude = 35.071969
         mk04.coordinate.longitude = 129.057528
         mk04.title = "영도 목장원"
         mk04.subtitle = "부산의 랜드마크"
-        mapView.addAnnotation(mk03)
+        //mapView.addAnnotation(mk03)
+        mks.append(mk04)
         
         //반경 지정 없이 모든 핀을 화면 내에 나타나게 함.
-        mapView.showAnnotations([mk01,mk02,mk03,mk04], animated: true)
+        //mapView.showAnnotations([mk01,mk02,mk03,mk04], animated: true)
+        mapView.showAnnotations(mks, animated: true)
     }
     
     @IBAction func satellite(_ sender: Any) {
@@ -68,5 +78,34 @@ class ViewController: UIViewController {
     @IBAction func standard(_ sender: Any) {
         mapView.mapType = MKMapType.standard
     }
+    
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let identifier = "RE"
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+            annotationView?.pinTintColor = UIColor.blue
+            annotationView?.animatesDrop = true
+            
+            //오른쪽버튼
+            let btn = UIButton(type: .detailDisclosure)
+            annotationView?.rightCalloutAccessoryView = btn
+            
+            //왼쪽그림
+            let imgV = UIImageView(image: UIImage(named : "DIT.png")) //그림
+            
+            imgV.frame = CGRect(x:0, y:0, width:30, height: 30)
+            annotationView?.leftCalloutAccessoryView = imgV
+        } else {
+            annotationView!.annotation = annotation
+        }
+        return annotationView
+    }
+    
 }
 
