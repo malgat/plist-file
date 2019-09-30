@@ -79,9 +79,10 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.mapType = MKMapType.standard
     }
     
-    
+    //MKMapViewDelegate => 핀이 4개이기 때문에 4번 실행.
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
+        //pin의 재활용
         let identifier = "RE"
         
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
@@ -89,23 +90,54 @@ class ViewController: UIViewController, MKMapViewDelegate {
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView!.canShowCallout = true
-            annotationView?.pinTintColor = UIColor.blue
-            annotationView?.animatesDrop = true
             
             //오른쪽버튼
             let btn = UIButton(type: .detailDisclosure)
             annotationView?.rightCalloutAccessoryView = btn
             
             //왼쪽그림
-            let imgV = UIImageView(image: UIImage(named : "DIT.png")) //그림
-            
-            imgV.frame = CGRect(x:0, y:0, width:30, height: 30)
-            annotationView?.leftCalloutAccessoryView = imgV
+            //let imgV = UIImageView(image: UIImage(named : "p1.jpeg")
+  
+            annotationView?.animatesDrop = true
+ 
         } else {
             annotationView!.annotation = annotation
         }
+        
+        var imgV = UIImageView()
+        
+        if annotation.title! == "동의과학대학교"{
+            annotationView?.pinTintColor = UIColor.brown
+            imgV = UIImageView(image: UIImage(named : "p1.jpeg"))
+        } else if annotation.title! == "부산시민공원"{
+            annotationView?.pinTintColor = UIColor.blue
+            imgV = UIImageView(image: UIImage(named : "p2.jpeg"))
+        } else if annotation.title! == "광안대교"{
+            annotationView?.pinTintColor = UIColor.black
+            imgV = UIImageView(image: UIImage(named : "p3.jpeg"))
+        } else if annotation.title! == "영도 목장원"{
+            annotationView?.pinTintColor = UIColor.white
+            imgV = UIImageView(image: UIImage(named : "p4.jpeg"))
+            
+        }
+        imgV.frame = CGRect(x:0, y:0, width:30, height: 30)
+        annotationView?.leftCalloutAccessoryView = imgV
+        
+        
         return annotationView
     }
+    
+    func mapView(_ _mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped contol: UIControl) {
+        
+        print("call");
+        
+        let alert = UIAlertController(title: view.annotation?.title!, message: view.annotation?.subtitle!, preferredStyle: UIAlertController.Style.alert)
+        let ok = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(ok)
+        self.present(alert, animated: false)
+        
+    }
+    
     
 }
 

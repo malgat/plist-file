@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C8DF9932341E2AA00FFCFC4 /* p3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0C8DF98F2341E2AA00FFCFC4 /* p3.jpeg */; };
+		0C8DF9942341E2AA00FFCFC4 /* p1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0C8DF9902341E2AA00FFCFC4 /* p1.jpeg */; };
+		0C8DF9952341E2AA00FFCFC4 /* p2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0C8DF9912341E2AA00FFCFC4 /* p2.jpeg */; };
+		0C8DF9962341E2AA00FFCFC4 /* p4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0C8DF9922341E2AA00FFCFC4 /* p4.jpeg */; };
 		0CEF1565232F53530021D2CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF1564232F53530021D2CF /* AppDelegate.swift */; };
 		0CEF1567232F53530021D2CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEF1566232F53530021D2CF /* ViewController.swift */; };
 		0CEF156A232F53530021D2CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CEF1568232F53530021D2CF /* Main.storyboard */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C8DF98F2341E2AA00FFCFC4 /* p3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = p3.jpeg; path = ../../p3.jpeg; sourceTree = "<group>"; };
+		0C8DF9902341E2AA00FFCFC4 /* p1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = p1.jpeg; path = ../../p1.jpeg; sourceTree = "<group>"; };
+		0C8DF9912341E2AA00FFCFC4 /* p2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = p2.jpeg; path = ../../p2.jpeg; sourceTree = "<group>"; };
+		0C8DF9922341E2AA00FFCFC4 /* p4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = p4.jpeg; path = ../../p4.jpeg; sourceTree = "<group>"; };
 		0CEF1561232F53530021D2CF /* MapKitTest02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapKitTest02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CEF1564232F53530021D2CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CEF1566232F53530021D2CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +66,10 @@
 		0CEF1563232F53530021D2CF /* MapKitTest02 */ = {
 			isa = PBXGroup;
 			children = (
+				0C8DF9902341E2AA00FFCFC4 /* p1.jpeg */,
+				0C8DF9912341E2AA00FFCFC4 /* p2.jpeg */,
+				0C8DF98F2341E2AA00FFCFC4 /* p3.jpeg */,
+				0C8DF9922341E2AA00FFCFC4 /* p4.jpeg */,
 				0CEF1564232F53530021D2CF /* AppDelegate.swift */,
 				0CEF1566232F53530021D2CF /* ViewController.swift */,
 				0CEF1568232F53530021D2CF /* Main.storyboard */,
@@ -136,6 +148,10 @@
 			files = (
 				0CEF156F232F53530021D2CF /* LaunchScreen.storyboard in Resources */,
 				0CEF156C232F53530021D2CF /* Assets.xcassets in Resources */,
+				0C8DF9942341E2AA00FFCFC4 /* p1.jpeg in Resources */,
+				0C8DF9962341E2AA00FFCFC4 /* p4.jpeg in Resources */,
+				0C8DF9952341E2AA00FFCFC4 /* p2.jpeg in Resources */,
+				0C8DF9932341E2AA00FFCFC4 /* p3.jpeg in Resources */,
 				0CEF156A232F53530021D2CF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
