@@ -3,22 +3,38 @@ import MapKit
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
-    var mks = [MKPointAnnotation]()
+    var mks = [MKAnnotation]()
     
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //zoomToRegion()
+        
         mapView.delegate = self
+        
+        let a = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.166197, longitude: 129.072594), title: "동의과학대학교", subtitle: "We Are DIT")
+        let b = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.168380, longitude: 129.057845), title: "부산시민공원", subtitle: "부산시민공원")
+        let c = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.147884, longitude: 129.130048), title: "광안대교", subtitle: "부산의 랜드마크")
+        let d = ViewPoint(coordinate: CLLocationCoordinate2D(latitude: 35.071969, longitude: 129.057528), title: "영도 목장원", subtitle: "부산의 랜드마크")
+        
+        mks.append(a)
+        mks.append(b)
+        mks.append(c)
+        mks.append(d)
+        
+        //mapView.addAnnotations([a, b, c])
+        mapView.showAnnotations(mks, animated: true)
+        
+       
         
         //MapType 설정
         //mapView.mapType = MKMapType.satellite
         //mapView.mapType = MKMapType.hybrid
         //mapView.mapType = MKMapType.standard
         
-        // DIT 위도 경도 설정.
-        let location = CLLocationCoordinate2D(latitude: 35.165005, longitude: 129.071484)
+        
         
         //반경 설정
         //let span = MKCoordinateSpan(latitudeDelta: 0.009, longitudeDelta: 0.01)
@@ -33,41 +49,48 @@ class ViewController: UIViewController, MKMapViewDelegate {
         //mapView.setRegion(region, animated: true)
         
         //pin 꼽기
-        let mk01 = MKPointAnnotation()
-        mk01.coordinate = location
-        mk01.title = "동의과학대학교"
-        mk01.subtitle = "We are DIT"
-        //mapView.addAnnotation(mk01)
-        mks.append(mk01)
-        
-        let mk02 = MKPointAnnotation()
-        mk02.coordinate.latitude = 35.168380
-        mk02.coordinate.longitude = 129.057845
-        mk02.title = "부산시민공원"
-        mk02.subtitle = "부산시민공원"
-        //mapView.addAnnotation(mk02)
-        mks.append(mk02)
-        
-        let mk03 = MKPointAnnotation()
-        mk03.coordinate.latitude = 35.147884
-        mk03.coordinate.longitude = 129.130048
-        mk03.title = "광안대교"
-        mk03.subtitle = "부산의 랜드마크"
-        //mapView.addAnnotation(mk03)
-        mks.append(mk03)
-        
-        let mk04 = MKPointAnnotation()
-        mk04.coordinate.latitude = 35.071969
-        mk04.coordinate.longitude = 129.057528
-        mk04.title = "영도 목장원"
-        mk04.subtitle = "부산의 랜드마크"
-        //mapView.addAnnotation(mk03)
-        mks.append(mk04)
+//        let mk01 = MKPointAnnotation()
+//        mk01.coordinate = location
+//        mk01.title = "동의과학대학교"
+//        mk01.subtitle = "We are DIT"
+//        //mapView.addAnnotation(mk01)
+//        mks.append(mk01)
+//
+//        let mk02 = MKPointAnnotation()
+//        mk02.coordinate.latitude = 35.168380
+//        mk02.coordinate.longitude = 129.057845
+//        mk02.title = "부산시민공원"
+//        mk02.subtitle = "부산시민공원"
+//        //mapView.addAnnotation(mk02)
+//        mks.append(mk02)
+//
+//        let mk03 = MKPointAnnotation()
+//        mk03.coordinate.latitude = 35.147884
+//        mk03.coordinate.longitude = 129.130048
+//        mk03.title = "광안대교"
+//        mk03.subtitle = "부산의 랜드마크"
+//        //mapView.addAnnotation(mk03)
+//        mks.append(mk03)
+//
+//        let mk04 = MKPointAnnotation()
+//        mk04.coordinate.latitude = 35.071969
+//        mk04.coordinate.longitude = 129.057528
+//        mk04.title = "영도 목장원"
+//        mk04.subtitle = "부산의 랜드마크"
+//        //mapView.addAnnotation(mk03)
+//        mks.append(mk04)
         
         //반경 지정 없이 모든 핀을 화면 내에 나타나게 함.
         //mapView.showAnnotations([mk01,mk02,mk03,mk04], animated: true)
-        mapView.showAnnotations(mks, animated: true)
+        //mapView.showAnnotations([a],animated:true)
     }
+    
+//    func zoomToRegion() {
+//        // DIT 위도 경도 설정.
+//        let location = CLLocationCoordinate2D(latitude: 35.165005, longitude: 129.071484)
+//        let region = MKCoordinateRegion(center : location, latitudinalMeters : 100, longitudinalMeters: 100)
+//        mapView.setRegion(region, animated: true)
+//    }
     
     @IBAction func satellite(_ sender: Any) {
         mapView.mapType = MKMapType.satellite
@@ -82,6 +105,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     //MKMapViewDelegate => 핀이 4개이기 때문에 4번 실행.
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
+        print("tttt")
         //pin의 재활용
         let identifier = "RE"
         
@@ -118,26 +142,18 @@ class ViewController: UIViewController, MKMapViewDelegate {
         } else if annotation.title! == "영도 목장원"{
             annotationView?.pinTintColor = UIColor.white
             imgV = UIImageView(image: UIImage(named : "p4.jpeg"))
-            
         }
         imgV.frame = CGRect(x:0, y:0, width:30, height: 30)
         annotationView?.leftCalloutAccessoryView = imgV
-        
-        
+
         return annotationView
     }
     
     func mapView(_ _mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped contol: UIControl) {
-        
-        print("call");
-        
         let alert = UIAlertController(title: view.annotation?.title!, message: view.annotation?.subtitle!, preferredStyle: UIAlertController.Style.alert)
         let ok = UIAlertAction(title: "확인", style: .default)
         alert.addAction(ok)
         self.present(alert, animated: false)
-        
     }
-    
-    
 }
 
